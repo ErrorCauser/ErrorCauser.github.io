@@ -1,7 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-07-14T16:41:34+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">ErrorCauser’s Write-Up’s</title><author><name>ErrorCauser</name></author><entry><title type="html">TryHackMe | Anonymous CTF</title><link href="http://localhost:4000/Anonymous/" rel="alternate" type="text/html" title="TryHackMe | Anonymous CTF" /><published>2020-07-14T00:00:00+02:00</published><updated>2020-07-14T00:00:00+02:00</updated><id>http://localhost:4000/Anonymous</id><content type="html" xml:base="http://localhost:4000/Anonymous/">&lt;p&gt;&lt;img src=&quot;http://hdwallpaperfun.com/wp-content/uploads/2014/12/Anonymous-Mask-Space-Wallpaper-Widescreen-45480.jpg&quot; alt=&quot;anonymous&quot; /&gt;&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html"></summary></entry><entry><title type="html">TryHackMe | Mr.Robot CTF</title><link href="http://localhost:4000/Mr.Robot/" rel="alternate" type="text/html" title="TryHackMe | Mr.Robot CTF" /><published>2020-07-14T00:00:00+02:00</published><updated>2020-07-14T00:00:00+02:00</updated><id>http://localhost:4000/Mr.Robot</id><content type="html" xml:base="http://localhost:4000/Mr.Robot/">&lt;p&gt;&lt;img src=&quot;https://www.hdwallpapers.in/walls/mr_robot_hd_4k_8k-HD.jpg&quot; alt=&quot;mr-robot&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-07-14T21:35:36+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">ErrorCauser’s Write-Up’s</title><author><name>ErrorCauser</name></author><entry><title type="html">TryHackMe | Anonymous CTF</title><link href="http://localhost:4000/Anonymous/" rel="alternate" type="text/html" title="TryHackMe | Anonymous CTF" /><published>2020-07-14T00:00:00+02:00</published><updated>2020-07-14T00:00:00+02:00</updated><id>http://localhost:4000/Anonymous</id><content type="html" xml:base="http://localhost:4000/Anonymous/">&lt;p&gt;&lt;img src=&quot;http://hdwallpaperfun.com/wp-content/uploads/2014/12/Anonymous-Mask-Space-Wallpaper-Widescreen-45480.jpg&quot; alt=&quot;anonymous&quot; /&gt;&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html"></summary></entry><entry><title type="html">TryHackMe | Mr.Robot CTF</title><link href="http://localhost:4000/Mr.Robot/" rel="alternate" type="text/html" title="TryHackMe | Mr.Robot CTF" /><published>2020-07-14T00:00:00+02:00</published><updated>2020-07-14T00:00:00+02:00</updated><id>http://localhost:4000/Mr.Robot</id><content type="html" xml:base="http://localhost:4000/Mr.Robot/">&lt;p&gt;&lt;img src=&quot;https://www.hdwallpapers.in/walls/mr_robot_hd_4k_8k-HD.jpg&quot; alt=&quot;mr-robot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hello Guys!
-Today we will&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html">Hello Guys! Today we will</summary></entry><entry><title type="html">TryHackMe | Pickle Rick CTF</title><link href="http://localhost:4000/PickleRick/" rel="alternate" type="text/html" title="TryHackMe | Pickle Rick CTF" /><published>2020-07-13T00:00:00+02:00</published><updated>2020-07-13T00:00:00+02:00</updated><id>http://localhost:4000/PickleRick</id><content type="html" xml:base="http://localhost:4000/PickleRick/">&lt;p&gt;&lt;img src=&quot;https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmocah.org%2Fuploads%2Fposts%2F5000326-rick-and-morty-tv-shows-hd-4k-illustration-behance-artist-artwork-digital-art.jpg&amp;amp;f=1&amp;amp;nofb=1&quot; alt=&quot;Rick-and-Morty&quot; /&gt;&lt;/p&gt;
+Today we will discuss the Mr.Robot CTF on TryHackMe.com
+The Room was Simple and Fun. It contained a Wordpress Website, the Goal was to Root the System.&lt;/p&gt;
+
+&lt;p&gt;URL: &lt;a href=&quot;https://tryhackme.com/room/mrrobot&quot;&gt;Mr Robot CTF&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Difficulty: Easy&lt;/p&gt;
+
+&lt;p&gt;Author: &lt;a href=&quot;https://tryhackme.com/p/ben&quot;&gt;Ben&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The first Step is to Enumerate the System. Below we see the Nmap Scan Results.
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732637299380322304/unknown.png&quot; alt=&quot;nmap-scan&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As we can see, the Port 80 is open and assigned to a Web-Server. As we check out the Website,
+we get a Mr.Robot themed Terminal, it appears to be a rabbit Hole.
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732638395393900554/unknown.png&quot; alt=&quot;mrorobotsite&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since we got a Website, I ran Gobuster with the “/usr/share/wordlists/dirb/common.txt” wordlist against the
+Site. Here were all the Results I got:
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732642289565958225/unknown.png&quot; alt=&quot;gobuster&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I got robots.txt as a Hit. The robots.txt, also known as the Robots Exlucion Standart Protocoll, is a Text-File which specify, which 
+Directories can be readed and which not. The so called “Crawlers” from Web Browsers, always search for the 
+robots.txt File when calling a Website, that way the Browsers know which Directories they are allowed to Display.&lt;/p&gt;
+
+&lt;p&gt;I got the Directory &lt;strong&gt;key-1-of-3.txt&lt;/strong&gt; in the robots.txt File. In the Directory I found my First Key.
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732640712604254228/unknown.png&quot; alt=&quot;robots.txt&quot; /&gt;
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732640932029136946/unknown.png&quot; alt=&quot;firstkey&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As you may also saw, there was a /login Directory displayed on Gobuster. As we navigate to it,
+we can see, its a Wordpress Website. 
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732643118310228050/unknown.png&quot; alt=&quot;wordpresslogin&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I got a txt File from the Room before, it contained the Password. The File had a lot of Words in seperate Lines in it. All I had to do was to
+use the Command &lt;strong&gt;uniq&lt;/strong&gt; with the parameter &lt;strong&gt;-u&lt;/strong&gt; to sort out the File. I got 8 Entrys left in the Output, one of them had to be the Password. The Password was
+&lt;strong&gt;ER28-0652&lt;/strong&gt;.
+As we got no Username, we could either start a Dictionary Attack with common Usernames, start a Bruteforce Attack. As we know, this is a Mr. Robot based 
+Room, so I tried Names from Characters. Turns out the Username was Elliot.&lt;/p&gt;
+
+&lt;p&gt;We now successfully gained access to the WordPress Panel. &lt;br /&gt;
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732666213263474889/unknown.png&quot; alt=&quot;wordpresspanel&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In there, I enumerated further for more Informations. I found another User called &lt;strong&gt;michi05654&lt;/strong&gt;. Turns out that this User (Subscriber) wasnt relevant.&lt;/p&gt;
+
+&lt;p&gt;Since I got Access to the Plugin Manager, I simply uploaded a &lt;a href=&quot;http://pentestmonkey.net/tools/web-shells/php-reverse-shell&quot;&gt;PHP Reverse Shell Script&lt;/a&gt;. 
+Now there were two ways, either I uploaded a completley new Plugin or I change a existing one. I setted up a Netcat Listener on Port 4444, edited an existing Plugin and successfully
+got a Reverse Shell. 
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732673375519899749/unknown.png&quot; alt=&quot;netcat&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As we can see, we are a so called “Daemon”. A Daemon is  a process that runs in the background and performs a specified operation at predefined times or in response to certain events. 
+I imported Python and spawned the Bash Shell with the following Command:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732676093378560100/unknown.png&quot; alt=&quot;shell&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Next key was located in &lt;strong&gt;/home/robot&lt;/strong&gt;. It was a MD5 Hash, so I cracked it with Hashcat and the famous rockyou.txt.&lt;/p&gt;
+
+&lt;p&gt;To obtain the 3rd and last Flag, I had to get Root Privilleges. I used the Command &lt;strong&gt;nmap –interactive&lt;/strong&gt; followed by &lt;strong&gt;!sh&lt;/strong&gt; to obtain a Root Shell.
+I could easily navigate to /root and get the last Key. 
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732681441464418419/unknown.png&quot; alt=&quot;3rdkey&quot; /&gt;&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html">Hello Guys! Today we will discuss the Mr.Robot CTF on TryHackMe.com The Room was Simple and Fun. It contained a Wordpress Website, the Goal was to Root the System. URL: Mr Robot CTF Difficulty: Easy Author: Ben</summary></entry><entry><title type="html">TryHackMe | Pickle Rick CTF</title><link href="http://localhost:4000/PickleRick/" rel="alternate" type="text/html" title="TryHackMe | Pickle Rick CTF" /><published>2020-07-13T00:00:00+02:00</published><updated>2020-07-13T00:00:00+02:00</updated><id>http://localhost:4000/PickleRick</id><content type="html" xml:base="http://localhost:4000/PickleRick/">&lt;p&gt;&lt;img src=&quot;https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmocah.org%2Fuploads%2Fposts%2F5000326-rick-and-morty-tv-shows-hd-4k-illustration-behance-artist-artwork-digital-art.jpg&amp;amp;f=1&amp;amp;nofb=1&quot; alt=&quot;Rick-and-Morty&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hello Guys!
 Today we are doing the Pickle Rick CTF on TryHackMe.com.

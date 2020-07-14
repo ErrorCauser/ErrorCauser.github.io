@@ -1,64 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<title>TryHackMe | Mr.Robot CTF | ErrorCauser&#39;s Write-Up&#39;s</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Hello Guys! Today we will discuss the Mr.Robot CTF on TryHackMe.com The Room was Simple and Fun. It contained a Wordpress Website, the Goal was to Root the S...">
-<meta name="author" content="ErrorCauser">
-<meta name="generator" content="Jekyll v4.1.1">
-<link rel="canonical" href="http://localhost:4000/Mr.Robot/">
-
-<link rel="stylesheet" href="/assets/css/minimal.css">
-
-<link rel="stylesheet" href="/assets/css/classes.css">
-<link rel="stylesheet" href="/assets/css/sidebar.css" media="screen and (min-width: 70em)">
-<link rel="alternate" href="/feed.xml" type="application/atom+xml" title="ErrorCauser's Write-Up's">
-
-<link rel="stylesheet" href="/assets/katex/katex.min.css">
-<script defer src="/assets/katex/katex.min.js"></script>
-<script defer src="/assets/katex/contrib/mathtex-script-type.min.js"></script>
-
-<script src="//errorcauser-github-io.disqus.com/embed.js" async></script>
-
-
-<header class="icons">
-  
-    <a href="/" class="title">ErrorCauser&#39;s Write-Up&#39;s</a>
-  
-  
-    
-  <nav>
-  <a aria-label="Home" href="/" ><svg aria-hidden="true" class="hidden"><use xlink:href="/assets/fontawesome/icons.svg#home"></use></svg><span aria-hidden="true" >Home</span></a>
-  <a aria-label="About" href="/about/" ><svg aria-hidden="true" class="hidden"><use xlink:href="/assets/fontawesome/icons.svg#address-card"></use></svg><span aria-hidden="true" >About</span></a>
-  
-  </nav>
-
-
-    
-  <nav>
-  <a aria-label="Mail" href="mailto:errorcauser@protonmail.com" ><svg aria-hidden="true" ><use xlink:href="/assets/fontawesome/icons.svg#envelope"></use></svg><span aria-hidden="true" class="hidden">Mail</span></a>
-  <a aria-label="Github" href="https://github.com/ErrorCauser" ><svg aria-hidden="true" ><use xlink:href="/assets/fontawesome/icons.svg#github"></use></svg><span aria-hidden="true" class="hidden">Github</span></a>
-  <a aria-label="Subscribe" href="https://www.youtube.com/channel/UCFnQ31gKtmZscrHCIi_ePcg" ><svg aria-hidden="true" ><use xlink:href="/assets/fontawesome/icons.svg#rss"></use></svg><span aria-hidden="true" class="hidden">Subscribe</span></a>
-  <a aria-label="Discord" href="https://discord.gg/TE7afPN" ><svg aria-hidden="true" ><use xlink:href="/assets/fontawesome/icons.svg#discord"></use></svg><span aria-hidden="true" class="hidden">Discord</span></a>
-  
-  </nav>
-
-
-  
-  
-    <div class="hidden description"></div>
-  
-</header>
-
- 
-
-<article>
-  <header>
-  
-  <h1><a href="/Mr.Robot/">TryHackMe | Mr.Robot CTF</a></h1><time datetime="2020-07-14T00:00:00+02:00">July 14, 2020</time>
-</header>
-
-  <p><img src="https://www.hdwallpapers.in/walls/mr_robot_hd_4k_8k-HD.jpg" alt="mr-robot" /></p>
+I"Î<p><img src="https://www.hdwallpapers.in/walls/mr_robot_hd_4k_8k-HD.jpg" alt="mr-robot" /></p>
 
 <p>Hello Guys!
 Today we will discuss the Mr.Robot CTF on TryHackMe.com
@@ -114,22 +54,4 @@ I imported Python and spawned the Bash Shell with the following Command:</p>
 
 <p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732676093378560100/unknown.png" alt="shell" /></p>
 
-<p>The Next key was located in <strong>/home/robot</strong>. It was a MD5 Hash, so I cracked it with Hashcat and the famous rockyou.txt.</p>
-
-<p>To obtain the 3rd and last Flag, I had to get Root Privilleges. I used the Command <strong>nmap â€“interactive</strong> followed by <strong>!sh</strong> to obtain a Root Shell.
-I could easily navigate to /root and get the last Key. 
-<img src="https://cdn.discordapp.com/attachments/723180241140318278/732681441464418419/unknown.png" alt="3rdkey" /></p>
-
-
-  
-</article>
-
-
-  <footer class="related">
-    <div class="previous"><span>Previous Post</span><a href="/Anonymous/">TryHackMe | Anonymous CTF</a></div>
-    <div class="next"></div>
-  </footer>
-
-
-
-</html>
+:ET
