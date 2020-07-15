@@ -1,0 +1,336 @@
+I")5<p><img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhdqwalls.com%2Fwallpapers%2Flinux-tux-minimalism-4k-42.jpg&amp;f=1&amp;nofb=1" alt="linuxlogo" /></p>
+
+<p>Hello Guys!
+Today we will discuss the Linux Challenge Walktrought Room on TryHackMe.com
+This rooms purpose is to learn or improve your Linux skills.</p>
+
+<p>There will be challenges that will involve you using the following commands and techniques:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Using commands such as: ls, grep, cd, tail, head, curl, strings, tmux, find, locate, diff, tar, xxd
+Understanding cronjobs, MOTD's and system mounts
+SSH'ing to other users accounts using a password and private key
+Locating files on the system hidden in different directories
+Encoding methods (base64, hex)
+MySQL database interaction
+Using SCP to download a file
+Understanding Linux system paths and system variables
+Understanding file permissions
+Using RDP for a GUI
+</code></pre></div></div>
+
+<p>URL: <a href="https://tryhackme.com/room/linuxctf">Linux Challenge</a></p>
+
+<p>Difficulty: Very Easy</p>
+
+<p>Author: <a href="https://tryhackme.com/p/ben">Ben</a></p>
+
+<p><strong>Task 2-1: Garry’s Home Directory</strong></p>
+
+<p>The first Task is to SSH into Garry’s System. We already got the SSH Credentials. In this Case the Command would be the following:</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732925358155890748/unknown.png" alt="ssh" /></p>
+
+<p>As we can see, there are a Total of <strong>3 Files</strong> in his Home Directory.</p>
+
+<p><strong>Task 3: The Basics</strong></p>
+
+<p><strong>Task 3-1: Flag 1</strong></p>
+
+<p>In this Case, the Flag is in our Directory. We simply have to use the Command cat to Display it. In the File we also see the Login Credentials
+for the User Bob.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732927712041238528/unknown.png" alt="flag1" /></p>
+
+<p><strong>Answer:</strong> f40dc0cff080ad38a6ba9a1c2c038b2c
+<strong>Credentials:</strong> bob:linuxrules</p>
+
+<p><strong>Task 3-2: Flag 2</strong></p>
+
+<p>We have the Login Credentials for Bob. We now open a SSH Session with Bob. the Second Flag is located in the /home Directory too.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732929173387083837/unknown.png" alt="flag2" /></p>
+
+<p><strong>Answer:</strong> 8e255dfa51c9cce67420d2386cede596</p>
+
+<p><strong>Task 3-3: Flag 3</strong></p>
+
+<p>Use <strong>ls -la</strong> to Display all hidden files and Directorys.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732929921600454686/unknown.png" alt="flag3" /></p>
+
+<p><strong>Answer:</strong> 9daf3281745c2d75fc6e992ccfdedfcd</p>
+
+<p><strong>Task 3-4: Flag 4</strong></p>
+
+<p>To identify this Flag, we needed a User defined Cronjob Command.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ crontab -e</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732931331650224158/unknown.png" alt="flag4" /></p>
+
+<p><strong>Answer:</strong> dcd5d1dcfac0578c99b7e7a6437827f3</p>
+
+<p><strong>Task 3-5: Flag 5</strong></p>
+
+<p>We got the Hint to use the find Command, so the Command I used was the following:</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ grep -rw "flag5"</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732933016875433994/unknown.png" alt="flag5" /></p>
+
+<p><strong>Answer:</strong> bd8f33216075e5ba07c9ed41261d1703</p>
+
+<p><strong>Task 3-6: Flag 6</strong></p>
+
+<p>This Flag requires a recursive search Command too. We got the Hint that the first two letters are “c9”.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ cat /home/flag6.txt | grep c9</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732934288395468821/unknown.png" alt="flag6" /></p>
+
+<p><strong>Answer:</strong> c9e142a1e25b24a837b98db589b08be5</p>
+
+<p><strong>Task 3-7: Flag 7</strong></p>
+
+<p>We got a Hint, we should check the System Processes.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732934996784054364/unknown.png" alt="flag7" /></p>
+
+<p><strong>Answer:</strong> 274adb75b337307bd57807c005ee6358</p>
+
+<p><strong>Task 3-8: Flag 8</strong></p>
+
+<p>The flag was zipped in a tar.gz format. I had to unzip it using the following Command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">tar -xf flag8.tar.gz</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732936077333233734/unknown.png" alt="flag8" /></p>
+
+<p><strong>Answer:</strong> 75f5edb76fe98dd5fc9f577a3f5de9bc</p>
+
+<p><strong>Task 3-9: Flag 9</strong></p>
+
+<p>The Hosts File is located in /etc/hosts</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732937393149182022/unknown.png" alt="flag9" /></p>
+
+<p><strong>Answer:</strong> dcf50ad844f9fe06339041ccc0d6e280</p>
+
+<p><strong>Task 3-10: Flag 10</strong></p>
+
+<p>We got told to check other Users on the System (passwd).</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732937731512074321/unknown.png" alt="flag10" /></p>
+
+<p><strong>Answer:</strong> 5e23deecfe3a7292970ee48ff1b6d00c</p>
+
+<p><strong>Task 4-1: Flag 11</strong></p>
+
+<p>This Flag was stored in the .bashrc file.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732939553417199616/unknown.png" alt="flag11" /></p>
+
+<p><strong>Answer:</strong> b4ba05d85801f62c4c0d05d3a76432e0</p>
+
+<p><strong>Task 4-2: Flag 12</strong></p>
+
+<p>The Hint we got, tells us that this Flag is stored where MOTD Files are stored. Thoose Files Display Messages
+or even Pictures on the Terminal. Thoose Files are stored under <strong>/etc/update-m,otd.d</strong>, we are searching for
+the 00-header File.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732941568880803910/unknown.png" alt="flag12" /></p>
+
+<p><strong>Answer:</strong> 01687f0c5e63382f1c9cc783ad44ff7f</p>
+
+<p><strong>Task 4-3: Flag 13</strong></p>
+
+<p>This Requires a <strong>different</strong> Command.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ diff flag13/script1 flag13/script2</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732942449030332436/unknown.png" alt="flag13" /></p>
+
+<p><strong>Answer:</strong> 3383f3771ba86b1ed9ab7fbf8abab531</p>
+
+<p><strong>Task 4-4: Flag 14</strong></p>
+
+<p>Logs are mostly stored in the Directory <strong>/var/log</strong>.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732943686823968808/unknown.png" alt="flag14" /></p>
+
+<p><strong>Answer:</strong> 71c3a8ad9752666275dadf62a93ef393</p>
+
+<p><strong>Task 4-5: Flag 15</strong></p>
+
+<p>Such Informations can be found in the Directory <strong>/etc/*release</strong></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732944546132131931/unknown.png" alt="flag15" /></p>
+
+<p><strong>Answer:</strong> a914945a4b2b5e934ae06ad6f9c6be45</p>
+
+<p><strong>Task 4-6: Flag 16</strong></p>
+
+<p>Mounts are usually displayed in <strong>/mount</strong>. This one was a bad one.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732945386393829455/unknown.png" alt="flag16" /></p>
+
+<p><strong>Answer:</strong> cab4b7cae33c87794d82efa1e7f834e6</p>
+
+<p><strong>Task 4-7: Flag 17</strong></p>
+
+<p>We now have to log into the User <strong>Alice</strong>, her Password is <strong>TryHackMe123</strong>.
+The Flag was right in the /home Directory.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732946118970834984/unknown.png" alt="flag17" /></p>
+
+<p><strong>Answer</strong>: 89d7bce9d0bab49e11e194b54a601362</p>
+
+<p><strong>Task 4-8: Flag 18</strong></p>
+
+<p>This Flag was just a hidden File.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732946445073645620/unknown.png" alt="flag18" /></p>
+
+<p><strong>Answer:</strong> c6522bb26600d30254549b6574d2cef2</p>
+
+<p><strong>Task 4-9: Flag 19</strong></p>
+
+<p>To read a specific Line of a File, we will need to use the following Command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">sed -n 2345p flag19</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732947102425940068/unknown.png" alt="flag19" /></p>
+
+<p><strong>Answer:</strong> 490e69bd1bf3fc736cce9ff300653a3b</p>
+
+<p><strong>Task 4-1: Flag 20</strong></p>
+
+<p>This Flag requires to be Base64 Decoded.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ cat flag20 | base64 --decode</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732948101769330718/unknown.png" alt="flag20" /></p>
+
+<p><strong>Answer:</strong> 02b9aab8a29970db08ec77ae425f6e68</p>
+
+<p><strong>Task 4-2: Flag 21</strong></p>
+
+<p>We will need to inspect the File with <strong>less</strong> instead of <strong>cat</strong> since its a .php File. 
+The File in inside Bob’s Home Directory.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732949056019759264/unknown.png" alt="flag21" /></p>
+
+<p><strong>Answer:</strong> g00djob</p>
+
+<p><strong>Task 4-3: Flag 22</strong></p>
+
+<p>This Flag is in Hex, we convert it into ASCII with the following Command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ cat flag22 | xxd -r -p</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732950061746749461/unknown.png" alt="flag22" /></p>
+
+<p><strong>Answer:</strong> 9d1ae8d569c83e03d8a8f61568a0fa7d</p>
+
+<p><strong>Task 4-4: Flag 23</strong></p>
+
+<p>This Flag is located in /home/alice. it requires a text reverse Command.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ cat flag23|rev</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732951150491598888/unknown.png" alt="flag23" /></p>
+
+<p><strong>Answer:</strong> ea52970566f4c090a7348b033852bff5</p>
+
+<p><strong>Task 4-5: Flag 24</strong>
+In order to Display readable Strings, we need to use the following Command:
+The Flag is located in the Directory <strong>/home/garry</strong>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ strings /home/garry/flag24</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732952286594072704/unknown.png" alt="flag24" /></p>
+
+<p><strong>Answer:</strong> hidd3nStr1ng</p>
+
+<p><strong>Task 4-7: Flag 26</strong></p>
+
+<p>To find this Flag, insert the Command below.</p>
+
+<p><code class="language-plaintext highlighter-rouge">find / -xdev -type f -print0 2&gt;/dev/null | xargs -0 grep -E '^[a-z0-9]{32}$' 2&gt;/dev/null</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732954782779834518/unknown.png" alt="flag26" /></p>
+
+<p><strong>Answer:</strong> 4bceb76f490b24ed577d704c24d6955d</p>
+
+<p><strong>Task 4-8: Flag 27</strong></p>
+
+<p>We got Permissions to view the File.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732955659489902643/unknown.png" alt="flag27" /></p>
+
+<p><strong>Answer:</strong> 6fc0c805702baebb0ecc01ae9e5a0db5</p>
+
+<p><strong>Task 4-9: Kernel Version</strong></p>
+
+<p>In order to get the Kernel Version, we use the Command below.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ uname -a</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732956322798239764/unknown.png" alt="kernel" /></p>
+
+<p><strong>Answer:</strong> 4.4.0-1075-aws</p>
+
+<p><strong>Task 4-10: Flag 29</strong></p>
+
+<p>Follow the Steps below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat flag29 | tr -d ' ' &gt;flag29_noS
+$ cat flag29_noS | tr -d '/n' &gt;flag29_noSN
+$ cat flag29_noSN
+</code></pre></div></div>
+
+<p><strong>Answer:</strong> fastidiisuscipitmeaei</p>
+
+<p><strong>Task 6-1: Flag 30</strong></p>
+
+<p>In order to get that Flag, I curled localhost.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ curl localhost</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732958088306622524/unknown.png" alt="flag30" /></p>
+
+<p><strong>Answer:</strong> fe74bb12fe03c5d8dfc245bdd1eae13f</p>
+
+<p><strong>Task 6-2: Flag 31</strong></p>
+
+<p>We got MySQL Credentials. We log in into the MySQL Databse with the following Command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ mysql -u root -p</code></p>
+
+<p>Afterwards we will type in <strong>SHOW DATABASES;</strong> in order to check all avaible Databases.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732959767022272603/unknown.png" alt="flag31" /></p>
+
+<p><strong>Answer:</strong> 2fb1cab13bf5f4d61de3555430c917f4</p>
+
+<p><strong>Task 6-3: Flag 31_A</strong></p>
+
+<p>We will now list all the table with the following Commands:</p>
+
+<p><code class="language-plaintext highlighter-rouge">USE database_2fb1cab13bf5f4d61de3555430c917f4</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">SHOW TABLES;</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">SELECT * FROM flags;</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732961334135881889/unknown.png" alt="flag32" /></p>
+
+<p><strong>Answer:</strong> ee5954ee1d4d94d61c2f823d7b9d733c</p>
+
+<p><strong>Task 6-4: Flag 32</strong></p>
+
+<p>This Flag requires you to Download the .mp3 File via Filezilla and Listen to it.</p>
+
+<p><strong>Answer:</strong> tryhackme1337</p>
+
+:ET

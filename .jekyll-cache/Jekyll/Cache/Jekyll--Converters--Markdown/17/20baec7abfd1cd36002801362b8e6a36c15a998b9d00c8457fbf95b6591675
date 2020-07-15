@@ -1,0 +1,65 @@
+I"�<p><img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhdqwalls.com%2Fwallpapers%2Flinux-tux-minimalism-4k-42.jpg&amp;f=1&amp;nofb=1" alt="linuxlogo" /></p>
+
+<p>Hello Guys!
+Today we will discuss the Linux Challenge Walktrought Room on TryHackMe.com
+This rooms purpose is to learn or improve your Linux skills.</p>
+
+<p>There will be challenges that will involve you using the following commands and techniques:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Using commands such as: ls, grep, cd, tail, head, curl, strings, tmux, find, locate, diff, tar, xxd
+Understanding cronjobs, MOTD's and system mounts
+SSH'ing to other users accounts using a password and private key
+Locating files on the system hidden in different directories
+Encoding methods (base64, hex)
+MySQL database interaction
+Using SCP to download a file
+Understanding Linux system paths and system variables
+Understanding file permissions
+Using RDP for a GUI
+</code></pre></div></div>
+
+<p>URL: <a href="https://tryhackme.com/room/linuxctf">Linux Challenge</a></p>
+
+<p>Difficulty: Very Easy</p>
+
+<p>Author: <a href="https://tryhackme.com/p/ben">Ben</a></p>
+
+<p><strong>Task 2-1: Garry’s Home Directory</strong></p>
+
+<p>The first Task is to SSH into Garry’s System. We already got the SSH Credentials. In this Case the Command would be the following:</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732925358155890748/unknown.png" alt="ssh" /></p>
+
+<p>As we can see, there are a Total of <strong>3 Files</strong> in his Home Directory.</p>
+
+<p><strong>Task 3: The Basics</strong></p>
+
+<p><strong>Task 3-1: Flag 1</strong>
+In this Case, the Flag is in our Directory. We simply have to use the Command cat to Display it. In the File we also see the Login Credentials
+for the User Bob.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732927712041238528/unknown.png" alt="flag1" /></p>
+
+<p><strong>Answer:</strong> f40dc0cff080ad38a6ba9a1c2c038b2c
+<strong>Credentials:</strong> bob:linuxrules</p>
+
+<p><strong>Task 3-2: Flag 2</strong>
+We have the Login Credentials for Bob. We now open a SSH Session with Bob. the Second Flag is located in the /home Directory too.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732929173387083837/unknown.png" alt="flag2" /></p>
+
+<p><strong>Answer:</strong> 8e255dfa51c9cce67420d2386cede596</p>
+
+<p><strong>Task 3-3: Flag 3</strong>
+Use <strong>ls -la</strong> to Display all hidden files and Directorys.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/732929921600454686/unknown.png" alt="flag3" /></p>
+
+<p><strong>Answer:</strong> 9daf3281745c2d75fc6e992ccfdedfcd</p>
+
+<p><strong>Task 3-4: Flag 4</strong>
+To identify this Flag, we needed a User defined Cronjob Command.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ crontab -e</code></p>
+
+:ET

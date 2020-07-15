@@ -1,0 +1,35 @@
+---
+title: "TryHackMe | Linux Challenge - Walktrough"
+layout: post
+---
+
+![linuxlogo](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhdqwalls.com%2Fwallpapers%2Flinux-tux-minimalism-4k-42.jpg&f=1&nofb=1)
+
+Hello Guys!
+Today we will discuss the Linux Challenge Walktrought Room on TryHackMe.com
+This rooms purpose is to learn or improve your Linux skills.
+
+There will be challenges that will involve you using the following commands and techniques:
+
+    Using commands such as: ls, grep, cd, tail, head, curl, strings, tmux, find, locate, diff, tar, xxd
+    Understanding cronjobs, MOTD's and system mounts
+    SSH'ing to other users accounts using a password and private key
+    Locating files on the system hidden in different directories
+    Encoding methods (base64, hex)
+    MySQL database interaction
+    Using SCP to download a file
+    Understanding Linux system paths and system variables
+    Understanding file permissions
+    Using RDP for a GUI
+
+URL: [Linux Challenge](https://tryhackme.com/room/linuxctf)
+Difficulty: Easy
+Author: [Ben](https://tryhackme.com/p/ben)
+ 
+###Task 2-1: Garry's Home Directory
+The first Task is to SSH into Garry's System. We already got the SSH Credentials. In this Case the Command would be the following:
+
+![ssh](https://cdn.discordapp.com/attachments/723180241140318278/732925358155890748/unknown.png)
+
+As we can see, there are a Total of **3 Files** in his Home Directory. 
+

@@ -1,4 +1,375 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-07-14T21:35:36+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">ErrorCauser’s Write-Up’s</title><author><name>ErrorCauser</name></author><entry><title type="html">TryHackMe | Anonymous CTF</title><link href="http://localhost:4000/Anonymous/" rel="alternate" type="text/html" title="TryHackMe | Anonymous CTF" /><published>2020-07-14T00:00:00+02:00</published><updated>2020-07-14T00:00:00+02:00</updated><id>http://localhost:4000/Anonymous</id><content type="html" xml:base="http://localhost:4000/Anonymous/">&lt;p&gt;&lt;img src=&quot;http://hdwallpaperfun.com/wp-content/uploads/2014/12/Anonymous-Mask-Space-Wallpaper-Widescreen-45480.jpg&quot; alt=&quot;anonymous&quot; /&gt;&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html"></summary></entry><entry><title type="html">TryHackMe | Mr.Robot CTF</title><link href="http://localhost:4000/Mr.Robot/" rel="alternate" type="text/html" title="TryHackMe | Mr.Robot CTF" /><published>2020-07-14T00:00:00+02:00</published><updated>2020-07-14T00:00:00+02:00</updated><id>http://localhost:4000/Mr.Robot</id><content type="html" xml:base="http://localhost:4000/Mr.Robot/">&lt;p&gt;&lt;img src=&quot;https://www.hdwallpapers.in/walls/mr_robot_hd_4k_8k-HD.jpg&quot; alt=&quot;mr-robot&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-07-15T16:30:01+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">ErrorCauser’s Write-Up’s</title><author><name>ErrorCauser</name></author><entry><title type="html">TryHackMe | Linux Challenge - Walktrough</title><link href="http://localhost:4000/Linux-Challenge/" rel="alternate" type="text/html" title="TryHackMe | Linux Challenge - Walktrough" /><published>2020-07-15T00:00:00+02:00</published><updated>2020-07-15T00:00:00+02:00</updated><id>http://localhost:4000/Linux-Challenge</id><content type="html" xml:base="http://localhost:4000/Linux-Challenge/">&lt;p&gt;&lt;img src=&quot;https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhdqwalls.com%2Fwallpapers%2Flinux-tux-minimalism-4k-42.jpg&amp;amp;f=1&amp;amp;nofb=1&quot; alt=&quot;linuxlogo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hello Guys!
+Today we will discuss the Linux Challenge Walktrought Room on TryHackMe.com
+This rooms purpose is to learn or improve your Linux skills.&lt;/p&gt;
+
+&lt;p&gt;There will be challenges that will involve you using the following commands and techniques:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Using commands such as: ls, grep, cd, tail, head, curl, strings, tmux, find, locate, diff, tar, xxd
+Understanding cronjobs, MOTD's and system mounts
+SSH'ing to other users accounts using a password and private key
+Locating files on the system hidden in different directories
+Encoding methods (base64, hex)
+MySQL database interaction
+Using SCP to download a file
+Understanding Linux system paths and system variables
+Understanding file permissions
+Using RDP for a GUI
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;URL: &lt;a href=&quot;https://tryhackme.com/room/linuxctf&quot;&gt;Linux Challenge&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Difficulty: Very Easy&lt;/p&gt;
+
+&lt;p&gt;Author: &lt;a href=&quot;https://tryhackme.com/p/ben&quot;&gt;Ben&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 2-1: Garry’s Home Directory&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The first Task is to SSH into Garry’s System. We already got the SSH Credentials. In this Case the Command would be the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732925358155890748/unknown.png&quot; alt=&quot;ssh&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As we can see, there are a Total of &lt;strong&gt;3 Files&lt;/strong&gt; in his Home Directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 3: The Basics&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 3-1: Flag 1&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In this Case, the Flag is in our Directory. We simply have to use the Command cat to Display it. In the File we also see the Login Credentials
+for the User Bob.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732927712041238528/unknown.png&quot; alt=&quot;flag1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; f40dc0cff080ad38a6ba9a1c2c038b2c
+&lt;strong&gt;Credentials:&lt;/strong&gt; bob:linuxrules&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 3-2: Flag 2&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We have the Login Credentials for Bob. We now open a SSH Session with Bob. the Second Flag is located in the /home Directory too.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732929173387083837/unknown.png&quot; alt=&quot;flag2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 8e255dfa51c9cce67420d2386cede596&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 3-3: Flag 3&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Use &lt;strong&gt;ls -la&lt;/strong&gt; to Display all hidden files and Directorys.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732929921600454686/unknown.png&quot; alt=&quot;flag3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 9daf3281745c2d75fc6e992ccfdedfcd&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 3-4: Flag 4&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;To identify this Flag, we needed a User defined Cronjob Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ crontab -e&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732931331650224158/unknown.png&quot; alt=&quot;flag4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; dcd5d1dcfac0578c99b7e7a6437827f3&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 3-5: Flag 5&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We got the Hint to use the find Command, so the Command I used was the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ grep -rw &quot;flag5&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732933016875433994/unknown.png&quot; alt=&quot;flag5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; bd8f33216075e5ba07c9ed41261d1703&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 3-6: Flag 6&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This Flag requires a recursive search Command too. We got the Hint that the first two letters are “c9”.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ cat /home/flag6.txt | grep c9&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732934288395468821/unknown.png&quot; alt=&quot;flag6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; c9e142a1e25b24a837b98db589b08be5&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 3-7: Flag 7&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We got a Hint, we should check the System Processes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732934996784054364/unknown.png&quot; alt=&quot;flag7&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 274adb75b337307bd57807c005ee6358&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 3-8: Flag 8&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The flag was zipped in a tar.gz format. I had to unzip it using the following Command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tar -xf flag8.tar.gz&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732936077333233734/unknown.png&quot; alt=&quot;flag8&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 75f5edb76fe98dd5fc9f577a3f5de9bc&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 3-9: Flag 9&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The Hosts File is located in /etc/hosts&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732937393149182022/unknown.png&quot; alt=&quot;flag9&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; dcf50ad844f9fe06339041ccc0d6e280&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 3-10: Flag 10&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We got told to check other Users on the System (passwd).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732937731512074321/unknown.png&quot; alt=&quot;flag10&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 5e23deecfe3a7292970ee48ff1b6d00c&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-1: Flag 11&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This Flag was stored in the .bashrc file.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732939553417199616/unknown.png&quot; alt=&quot;flag11&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; b4ba05d85801f62c4c0d05d3a76432e0&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-2: Flag 12&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The Hint we got, tells us that this Flag is stored where MOTD Files are stored. Thoose Files Display Messages
+or even Pictures on the Terminal. Thoose Files are stored under &lt;strong&gt;/etc/update-m,otd.d&lt;/strong&gt;, we are searching for
+the 00-header File.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732941568880803910/unknown.png&quot; alt=&quot;flag12&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 01687f0c5e63382f1c9cc783ad44ff7f&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-3: Flag 13&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This Requires a &lt;strong&gt;different&lt;/strong&gt; Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ diff flag13/script1 flag13/script2&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732942449030332436/unknown.png&quot; alt=&quot;flag13&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 3383f3771ba86b1ed9ab7fbf8abab531&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-4: Flag 14&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Logs are mostly stored in the Directory &lt;strong&gt;/var/log&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732943686823968808/unknown.png&quot; alt=&quot;flag14&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 71c3a8ad9752666275dadf62a93ef393&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-5: Flag 15&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Such Informations can be found in the Directory &lt;strong&gt;/etc/*release&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732944546132131931/unknown.png&quot; alt=&quot;flag15&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; a914945a4b2b5e934ae06ad6f9c6be45&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-6: Flag 16&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Mounts are usually displayed in &lt;strong&gt;/mount&lt;/strong&gt;. This one was a bad one.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732945386393829455/unknown.png&quot; alt=&quot;flag16&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; cab4b7cae33c87794d82efa1e7f834e6&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-7: Flag 17&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We now have to log into the User &lt;strong&gt;Alice&lt;/strong&gt;, her Password is &lt;strong&gt;TryHackMe123&lt;/strong&gt;.
+The Flag was right in the /home Directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732946118970834984/unknown.png&quot; alt=&quot;flag17&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer&lt;/strong&gt;: 89d7bce9d0bab49e11e194b54a601362&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-8: Flag 18&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This Flag was just a hidden File.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732946445073645620/unknown.png&quot; alt=&quot;flag18&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; c6522bb26600d30254549b6574d2cef2&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-9: Flag 19&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;To read a specific Line of a File, we will need to use the following Command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sed -n 2345p flag19&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732947102425940068/unknown.png&quot; alt=&quot;flag19&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 490e69bd1bf3fc736cce9ff300653a3b&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-1: Flag 20&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This Flag requires to be Base64 Decoded.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ cat flag20 | base64 --decode&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732948101769330718/unknown.png&quot; alt=&quot;flag20&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 02b9aab8a29970db08ec77ae425f6e68&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-2: Flag 21&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We will need to inspect the File with &lt;strong&gt;less&lt;/strong&gt; instead of &lt;strong&gt;cat&lt;/strong&gt; since its a .php File. 
+The File in inside Bob’s Home Directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732949056019759264/unknown.png&quot; alt=&quot;flag21&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; g00djob&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-3: Flag 22&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This Flag is in Hex, we convert it into ASCII with the following Command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ cat flag22 | xxd -r -p&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732950061746749461/unknown.png&quot; alt=&quot;flag22&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 9d1ae8d569c83e03d8a8f61568a0fa7d&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-4: Flag 23&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This Flag is located in /home/alice. it requires a text reverse Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ cat flag23|rev&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732951150491598888/unknown.png&quot; alt=&quot;flag23&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; ea52970566f4c090a7348b033852bff5&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-5: Flag 24&lt;/strong&gt;
+In order to Display readable Strings, we need to use the following Command:
+The Flag is located in the Directory &lt;strong&gt;/home/garry&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ strings /home/garry/flag24&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732952286594072704/unknown.png&quot; alt=&quot;flag24&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; hidd3nStr1ng&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-7: Flag 26&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;To find this Flag, insert the Command below.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;find / -xdev -type f -print0 2&amp;gt;/dev/null | xargs -0 grep -E '^[a-z0-9]{32}$' 2&amp;gt;/dev/null&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732954782779834518/unknown.png&quot; alt=&quot;flag26&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 4bceb76f490b24ed577d704c24d6955d&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-8: Flag 27&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We got Permissions to view the File.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732955659489902643/unknown.png&quot; alt=&quot;flag27&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 6fc0c805702baebb0ecc01ae9e5a0db5&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-9: Kernel Version&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to get the Kernel Version, we use the Command below.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ uname -a&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732956322798239764/unknown.png&quot; alt=&quot;kernel&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 4.4.0-1075-aws&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 4-10: Flag 29&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Follow the Steps below.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cat flag29 | tr -d ' ' &amp;gt;flag29_noS
+$ cat flag29_noS | tr -d '/n' &amp;gt;flag29_noSN
+$ cat flag29_noSN
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; fastidiisuscipitmeaei&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 6-1: Flag 30&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to get that Flag, I curled localhost.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ curl localhost&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732958088306622524/unknown.png&quot; alt=&quot;flag30&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; fe74bb12fe03c5d8dfc245bdd1eae13f&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 6-2: Flag 31&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We got MySQL Credentials. We log in into the MySQL Databse with the following Command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ mysql -u root -p&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Afterwards we will type in &lt;strong&gt;SHOW DATABASES;&lt;/strong&gt; in order to check all avaible Databases.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732959767022272603/unknown.png&quot; alt=&quot;flag31&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 2fb1cab13bf5f4d61de3555430c917f4&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 6-3: Flag 31_A&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We will now list all the table with the following Commands:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;USE database_2fb1cab13bf5f4d61de3555430c917f4&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SHOW TABLES;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SELECT * FROM flags;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732961334135881889/unknown.png&quot; alt=&quot;flag32&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; ee5954ee1d4d94d61c2f823d7b9d733c&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 6-4: Flag 32&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This Flag requires you to Download the .mp3 File via Filezilla and Listen to it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; tryhackme1337&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 6-5: Flag 33&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The location to storeee your $PATH is &lt;strong&gt;.profile&lt;/strong&gt; in Bob’s Directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732962417415553032/unknown.png&quot; alt=&quot;flag33&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 547b6ceee3c5b997b625de99b044f5cf&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 6-6: Flag 34&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to list the enviroment Variables, you will ned to apply the following Command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ printenv&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732962987442307172/unknown.png&quot; alt=&quot;flag34&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 7a88306309fe05070a7c5bb26a6b2def&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 6-7: Flag 35&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We will use the Command &lt;strong&gt;getent group&lt;/strong&gt; for this one.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732964717236191366/unknown.png&quot; alt=&quot;flag35&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 769afb6&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task 6-8: Flag 36&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The Flag is located in /etc. We need to know who i allowed to read it.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ id&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ cat /etc/flag36&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732967072728088736/unknown.png&quot; alt=&quot;flag36&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 83d233f2ffa388e5f0b053848caed1eb&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html">Hello Guys! Today we will discuss the Linux Challenge Walktrought Room on TryHackMe.com This rooms purpose is to learn or improve your Linux skills. There will be challenges that will involve you using the following commands and techniques: Using commands such as: ls, grep, cd, tail, head, curl, strings, tmux, find, locate, diff, tar, xxd Understanding cronjobs, MOTD's and system mounts SSH'ing to other users accounts using a password and private key Locating files on the system hidden in different directories Encoding methods (base64, hex) MySQL database interaction Using SCP to download a file Understanding Linux system paths and system variables Understanding file permissions Using RDP for a GUI URL: Linux Challenge Difficulty: Very Easy Author: Ben Task 2-1: Garry’s Home Directory The first Task is to SSH into Garry’s System. We already got the SSH Credentials. In this Case the Command would be the following: As we can see, there are a Total of 3 Files in his Home Directory.</summary></entry><entry><title type="html">TryHackMe | Anonymous CTF</title><link href="http://localhost:4000/Anonymous/" rel="alternate" type="text/html" title="TryHackMe | Anonymous CTF" /><published>2020-07-14T00:00:00+02:00</published><updated>2020-07-14T00:00:00+02:00</updated><id>http://localhost:4000/Anonymous</id><content type="html" xml:base="http://localhost:4000/Anonymous/">&lt;p&gt;&lt;img src=&quot;http://hdwallpaperfun.com/wp-content/uploads/2014/12/Anonymous-Mask-Space-Wallpaper-Widescreen-45480.jpg&quot; alt=&quot;anonymous&quot; /&gt;&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html"></summary></entry><entry><title type="html">TryHackMe | Mr.Robot CTF</title><link href="http://localhost:4000/Mr.Robot/" rel="alternate" type="text/html" title="TryHackMe | Mr.Robot CTF" /><published>2020-07-14T00:00:00+02:00</published><updated>2020-07-14T00:00:00+02:00</updated><id>http://localhost:4000/Mr.Robot</id><content type="html" xml:base="http://localhost:4000/Mr.Robot/">&lt;p&gt;&lt;img src=&quot;https://www.hdwallpapers.in/walls/mr_robot_hd_4k_8k-HD.jpg&quot; alt=&quot;mr-robot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hello Guys!
 Today we will discuss the Mr.Robot CTF on TryHackMe.com
