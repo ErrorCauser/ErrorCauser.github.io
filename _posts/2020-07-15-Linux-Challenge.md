@@ -6,6 +6,7 @@ layout: post
 ![linuxlogo](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhdqwalls.com%2Fwallpapers%2Flinux-tux-minimalism-4k-42.jpg&f=1&nofb=1)
 
 Hello Guys!
+
 Today we will discuss the Linux Challenge Walktrought Room on TryHackMe.com
 This rooms purpose is to learn or improve your Linux skills.
 

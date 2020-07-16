@@ -4,9 +4,10 @@ layout: post
 mathjax: true
 ---
 
-![Rick-and-Morty](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmocah.org%2Fuploads%2Fposts%2F5000326-rick-and-morty-tv-shows-hd-4k-illustration-behance-artist-artwork-digital-art.jpg&f=1&nofb=1)
+![Rick-and-Morty](https://hdqwalls.com/wallpapers/rick-and-morty-in-another-dimension-illustration-6c.jpg)
 
 Hello Guys!
+
 Today we are doing the Pickle Rick CTF on TryHackMe.com.
 This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle.
 

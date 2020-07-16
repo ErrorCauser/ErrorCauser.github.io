@@ -1,0 +1,78 @@
+I"�<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Toys_%22R%22_Us_logo.svg/1280px-Toys_%22R%22_Us_logo.svg.png" alt="toolsrus" /></p>
+
+<p>Hello Guys!</p>
+
+<p>In this Post I am going to share my ToolsRus CTF experience with you.
+Your challenge is to use the tools listed below to enumerate a server, gathering information along 
+the way that will eventually lead to you taking over the machine.
+This CTF Requires the following Tools:</p>
+
+<ul>
+  <li>Dirbuster</li>
+  <li>Hydra</li>
+  <li>Nmap</li>
+  <li>Nikto</li>
+  <li>Metasploit</li>
+</ul>
+
+<p>URL: <a href="https://tryhackme.com/room/toolsrus">ToolsRus CTF</a></p>
+
+<p>Difficulty: Easy</p>
+
+<p>Author: <a href="https://tryhackme.com/p/tryhackme">TryHackMe</a></p>
+
+<p>First of all we will Enumerate the Machine.</p>
+
+<p>I started with a Nmap Scan followed by a Gobuster Scan on Port 80 with the famous common.txt Wordlits.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733051608207982602/unknown.png" alt="nmap" /></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733052056235147354/unknown.png" alt="gobuster" /></p>
+
+<p>Once I navigated into the <strong>/guidelines</strong> Directory, I found a potential Username <strong>Bob</strong>.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733055470977286254/unknown.png" alt="guidelines" /></p>
+
+<p>The Port 1234 is open. It is running Apache Tomcat/7.0.88.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733056110038089774/unknown.png" alt="tomcat" /></p>
+
+<p>Here are the Results of Gobsuter on Port 1234:</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733056974241005689/unknown.png" alt="gobuster2" /></p>
+
+<p>Next thing I did was a Bruteforce attack with rockyou on the <strong>/protected</strong> Direction, since it requires a Password.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733058590042226768/unknown.png" alt="login" /></p>
+
+<p>In order to crack the Passoword I used Hydra with the following Command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ hydra -l bob -P {YOUR WORDLIST} -f {MACHINE_IP} http-get /protected/</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733059086408482846/unknown.png" alt="hydra" /></p>
+
+<p>As we got into the Site, we got a Picture saying “This Protected Page has now moved to a different Port”.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733059536910417920/unknown.png" alt="protected" /></p>
+
+<p>I ran Nikto against Port <strong>1234</strong> afterwards to find our new loginpage.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733074665584459846/unknown.png" alt="nikto" /></p>
+
+<p>I tried to login to the <strong>Tomcat Manager</strong> on Port 1234 with the same Credentials. It worked.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733060078973878302/unknown.png" alt="tomcatmanager" /></p>
+
+<p>As a Manager we have the ability to Upload a <strong>WAR</strong> File. You could created a WAR File with a Linux Payload and upload it.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733062009540706444/unknown.png" alt="upload-tomcat" /></p>
+
+<p>As it turns out, this Tomcat Server is very outdated and vulnerable. I found a Metasploit Module to ecploit the Manager on Port 1234.
+The Module is called <strong>exploit/multi/http/tomcat_mgr_upload</strong>. It spwans a Meterpreter Session.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733076590526857317/unknown.png" alt="shell" /></p>
+
+<p>We get the Shell as the Root User. The next thing I did was getting the Root Flag, which is stored in <strong>/root/flag.txt</strong>.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733077167277211678/unknown.png" alt="rootflag" /></p>
+:ET

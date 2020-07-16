@@ -1,0 +1,71 @@
+I"u<p><img src="" alt="wordpress-logo" /></p>
+
+<p>Hello Guys!</p>
+
+<p>In this Post we will discuss the Blog CTF on TryHackMe.
+At this point its a new Room (5 Days old).
+In order to get the blog to work with AWS, you’ll need to add blog.thm 
+to your /etc/hosts file.</p>
+
+<p>URL: <a href="https://tryhackme.com/room/blog">Blog</a></p>
+
+<p>Difficulty: Medium</p>
+
+<p>Author: <a href="https://tryhackme.com/p/Nameless0ne">Nameless0ne</a></p>
+
+<p>As always, I started by Enumerating the System.</p>
+
+<p>Nmap gor me the following Results:</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733283213937606666/unknown.png" alt="nmap" /></p>
+
+<p>Afterwards I ran enum4linux and Gobuster with the popular common.txt Wordlist.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733284680522137750/unknown.png" alt="gobuster" />
+<img src="https://cdn.discordapp.com/attachments/723180241140318278/733284876538740777/unknown.png" alt="enum4linux" />
+<img src="https://cdn.discordapp.com/attachments/723180241140318278/733285029433835520/unknown.png" alt="enum4linux-nbt" /></p>
+
+<p>In the Actual Site, we can also see two Names which we could use to Bruteforce a Password:</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733289155953688636/unknown.png" alt="names" /></p>
+
+<p>I used all Usernames I got up until that point, and made a custom Username-List. I simply changed the formats
+from Names to usernames, for example:</p>
+
+<p><code class="language-plaintext highlighter-rouge">bob johnson -&gt; bob.johnson -&gt; johnson.bob -&gt; bob-johnson -&gt; bob-johnson123 ...</code></p>
+
+<p>Thats what you could do on another Site. Since we got a Wordpress Site, we can use a Tool called <strong>wpsscan</strong> to 
+Enumerate Users and Dictionary Attack their Password with rockyou.txt.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[i] User(s) Identified:
+
+[+] kwheel
+ | Found By: Author Posts - Author Pattern (Passive Detection)
+ | Confirmed By:
+ |  Wp Json Api (Aggressive Detection)
+ |   - http://blog.thm/wp-json/wp/v2/users/?per_page=100&amp;page=1
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+
+[+] bjoel
+ | Found By: Author Posts - Author Pattern (Passive Detection)
+ | Confirmed By:
+ |  Wp Json Api (Aggressive Detection)
+ |   - http://blog.thm/wp-json/wp/v2/users/?per_page=100&amp;page=1
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+</code></pre></div></div>
+
+<p>As I said before, from here you can use the Tool with the two found Usernames to Dicitonary attack the</p>
+
+<p>two Users.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733316945226760292/unknown.png" alt="attackingusers" /></p>
+
+<p>After getting the Password for one of the Users, you will get Access to the Panel. You have no rights</p>
+
+<p>to actually Post anything. We need to PrivEsc.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733317602692300830/unknown.png" alt="panel" /></p>
+
+:ET

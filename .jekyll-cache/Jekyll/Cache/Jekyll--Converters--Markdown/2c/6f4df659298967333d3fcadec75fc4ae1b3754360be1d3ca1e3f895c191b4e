@@ -1,0 +1,17 @@
+I"3<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Toys_%22R%22_Us_logo.svg/1280px-Toys_%22R%22_Us_logo.svg.png" alt="toolsrus" /></p>
+
+<p>Hello Guys!</p>
+
+<p>In this Post I am going to share my ToolsRus CTF experience with you.
+Your challenge is to use the tools listed below to enumerate a server, gathering information along 
+the way that will eventually lead to you taking over the machine.
+This CTF Requires the following Tools:</p>
+
+<ul>
+  <li>Dirbuster</li>
+  <li>Hydra</li>
+  <li>Nmap</li>
+  <li>Nikto</li>
+  <li>Metasploit</li>
+</ul>
+:ET
